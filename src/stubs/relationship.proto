@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package stubs.relationship;
+
+import "google/protobuf/timestamp.proto";
+
+message BusinessPartnershipMessage {
+  RelationshipType relationship_type = 1;
+  CompanyMessage company_message = 2;
+  repeated PartnerMessage partner_message = 3;
+}
+
+enum RelationshipType {
+  UNKNOWN = 0;
+  PARTNERSHIP = 1;
+  REPRESENTATIVES = 2;
+  PROSECUTORS = 3;
+  RELATIVES = 4;
+}
+
+message CompanyMessage {
+  string company_id = 1;
+  string person_type = 2;
+  string cpf_cnpj = 3;
+  string name = 4;
+  google.protobuf.Timestamp included_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message CompletenessMessage {
+  int32 completeness_level = 1;
+  string additional_information = 2;
+  DiffMessage diff_message = 3;
+  google.protobuf.Timestamp validated_at = 7;
+}
+
+message DiffMessage {
+  bool open_diff = 1;
+  string journey_id = 2;
+  google.protobuf.Timestamp date = 3;
+}
+
+message PartnerMessage {
+  string partner_id = 1;
+  double participation_percentage = 2;
+  string cpf_cnpj = 3;
+  string person_type = 4;
+  string name = 5;
+  CompletenessMessage completeness = 6;
+  google.protobuf.Timestamp included_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+service PartnershipService {
+  rpc AddPartnership(BusinessPartnershipMessage) returns (BusinessPartnershipMessage);
+  rpc GetPartnership(BusinessPartnershipMessage) returns (BusinessPartnershipMessage);
+  rpc UpdatePartnership(BusinessPartnershipMessage) returns (BusinessPartnershipMessage);
+  rpc DeletePartnership(BusinessPartnershipMessage) returns (BusinessPartnershipMessage);
+}

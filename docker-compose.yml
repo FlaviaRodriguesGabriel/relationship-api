@@ -1,0 +1,34 @@
+version: "3"
+services:
+  gremlin-server:
+    container_name: gremlin-server
+    image: tinkerpop/gremlin-server
+    ports:
+      - "8182:8182"
+
+  # gremlin-console:
+  #   container_name: gremlin-console
+  #   image: tinkerpop/gremlin-console
+  #   links:
+  #     - gremlin-server
+  #   depends_on:
+  #     - gremlin-server
+
+  gremlin-visualizer:
+    container_name: gremlin-visualizer
+    image: prabushitha/gremlin-visualizer:latest
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    links:
+      - gremlin-server
+    depends_on:
+      - gremlin-server
+  #
+  # relationship-api:
+  #   build: .
+  #   depends_on:
+  #     - gremlin-server
+  #   command: >-
+  #     scripts/wait-for-it.sh gremlin-server:8182 -s -t 60 --
+  #     ...

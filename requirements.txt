@@ -1,0 +1,12 @@
+protobuf
+grpcio
+grpcio-tools
+boto3
+flask
+gremlinpython
+prometheus_metrics_proto
+grpc-argument-validator
+
+requests
+
+loguru

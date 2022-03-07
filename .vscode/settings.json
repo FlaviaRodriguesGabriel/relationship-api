@@ -1,0 +1,62 @@
+{
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "ms-python.python",
+        "editor.formatOnSave": true,
+        "editor.rulers": [
+            88
+        ],
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 88,
+        "editor.wrappingIndent": "same"
+    },
+    "coverage-gutters.showGutterCoverage": true,
+    "coverage-gutters.showLineCoverage": false,
+    "coverage-gutters.showRulerCoverage": false,
+    "coverage-gutters.xmlname": "cobertura.xml",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": false
+    },
+    "editor.rulers": [
+        88
+    ],
+    "files.exclude": {
+        "**/*.pyc": true,
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.mypy_cache": true,
+        "**/.svn": true,
+        "**/.terraform": true,
+        "**/CVS": true,
+        "**/__pycache__": true,
+        "**/env": true,
+        "**/node_modules": true,
+        ".pytest_cache": true,
+        ".venv": true,
+        "venv": true,
+    },
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/src"
+    ],
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}/src"
+    ],
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.formatting.provider": "black",
+    "python.linting.banditEnabled": true,
+    "python.linting.enabled": true,
+    // "python.linting.flake8Args": [
+    //     "--config `find ${workspaceFolder} -name setup.cfg | grep -v '.venv' | head -n1`"
+    // ],
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.sortImports.args": [
+        "-sp `find ${workspaceFolder} -name setup.cfg | grep -v '.venv' | head -n1`"
+    ],
+    "python.testing.cwd": "src/tests",
+    "shellcheck.run": "onSave"
+}

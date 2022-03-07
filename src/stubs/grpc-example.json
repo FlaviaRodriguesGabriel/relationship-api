@@ -1,0 +1,69 @@
+{
+  "relationship_type": 1,
+  "company_message": {
+    "company_id": "c2174821-4d8a-420b-91fd-d5167d33e5fe",
+    "person_type": "J",
+    "cpf_cnpj": "00000000000191",
+    "name": "Emp 1",
+    "included_at": {
+      "seconds": 20,
+      "nanos": 10
+    },
+    "updated_at": {
+      "seconds": 20,
+      "nanos": 10
+    }
+  },
+  "partner_message": [
+    {
+      "partner_id": "ae4976b1-4ff0-44d2-a6cf-80b8f5274018",
+      "participation_percentage": 1.4,
+      "cpf_cnpj": "00093500743030",
+      "person_type": "F",
+      "name": "Fla 1",
+      "completeness": {
+        "completeness_level": 100,
+        "additional_information": "Hello",
+        "diff_message": {
+          "open_diff": true,
+          "journey_id": "8a43d01c-66fa-4b0b-9bb0-adb8b572dad9",
+          "date": {
+            "seconds": 20,
+            "nanos": 10
+          }
+        },
+        "validated_at": {
+          "seconds": 20,
+          "nanos": 10
+        }
+      },
+      "included_at": {},
+      "updated_at": {}
+    },
+    {
+      "partner_id": "ae4976b1-4ff0-44d2-a6cf-80b8f5274018",
+      "participation_percentage": 1.4,
+      "cpf_cnpj": "00087148998093",
+      "person_type": "F",
+      "name": "Fla 2",
+      "completeness": {
+        "completeness_level": 100,
+        "additional_information": "Hello",
+        "diff_message": {
+          "open_diff": true,
+          "journey_id": "8a43d01c-66fa-4b0b-9bb0-adb8b572dad9",
+          "date": {
+            "seconds": 20,
+            "nanos": 10
+          }
+        },
+        "validated_at": {
+          "seconds": 20,
+          "nanos": 10
+        }
+      },
+      "included_at": {},
+      "updated_at": {}
+    }
+  ]
+}
