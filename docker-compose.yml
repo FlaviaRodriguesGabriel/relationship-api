@@ -5,6 +5,8 @@ services:
     image: tinkerpop/gremlin-server
     ports:
       - "8182:8182"
+    volumes:
+      - ./src/conf/tinkergraph-empty.properties:/opt/gremlin-server/conf/tinkergraph-empty.properties
 
   # gremlin-console:
   #   container_name: gremlin-console

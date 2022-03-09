@@ -1,6 +1,8 @@
+import uuid
+
 import grpc
 from gremlin_python.process.graph_traversal import GraphTraversal, GraphTraversalSource
-from gremlin_python.structure.graph import Vertex
+from gremlin_python.process.traversal import T
 from grpc_argument_validator import validate_args
 from loguru import logger
 
@@ -47,6 +49,7 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
 
         company = (
             self.graph.addV(request.company_message.person_type)
+            .property(T.id, request.company_message.company_id)
             .property("person_id", request.company_message.company_id)
             .property("name", request.company_message.name)
             .next()
@@ -55,12 +58,15 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
         for partner_message in request.partner_message:
             partner = (
                 self.graph.addV(partner_message.person_type)
+                .property(T.id, partner_message.partner_id)
                 .property("person_id", partner_message.partner_id)
                 .property("name", partner_message.name)
             ).next()
 
             self.graph.V(company).addE("has_partner").to(partner).property(
-                "participation_percentage", 0.5
+                T.id, uuid.uuid4()
+            ).property(
+                "participation_percentage", partner_message.participation_percentage
             ).iterate()
             print(self.graph.V().has("name", partner_message.name))
 
@@ -99,12 +105,15 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
             context.abort(grpc.StatusCode.NOT_FOUND, "Relationship type not supported")
 
         partnership_query: GraphTraversal = (
-            self.graph.V().has("person_id", request.company_message.company_id).out()
+            self.graph.V().has(T.id, request.company_message.company_id).out()
         )
+        print("!!!!________________________________________________!!!!!")
+        print(partnership_query.hasNext())
 
         if not partnership_query.hasNext():
             context.abort(grpc.StatusCode.NOT_FOUND, "Company not found")
 
         for partnership in partnership_query:
             logger.info(partnership)
+
         return partnership

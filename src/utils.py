@@ -9,5 +9,5 @@ relationships_by_type = {
     RelationshipType.PARTNERSHIP,
     RelationshipType.REPRESENTATIVES,
     RelationshipType.PROSECUTORS,
-    # RelationshipType.RELATIVES,
+    RelationshipType.RELATIVES,
 }
