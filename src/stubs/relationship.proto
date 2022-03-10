@@ -42,13 +42,15 @@ message DiffMessage {
 
 message PartnerMessage {
   string partner_id = 1;
-  double participation_percentage = 2;
-  string cpf_cnpj = 3;
-  string person_type = 4;
-  string name = 5;
-  CompletenessMessage completeness = 6;
-  google.protobuf.Timestamp included_at = 7;
-  google.protobuf.Timestamp updated_at = 8;
+  string tenant_id = 2;
+  double participation_percentage = 3;
+  string cpf_cnpj = 4;
+  string person_type = 5;
+  string name = 6;
+  string social_name = 7;
+  CompletenessMessage completeness = 8;
+  google.protobuf.Timestamp included_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
 }
 
 service PartnershipService {

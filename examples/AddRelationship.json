@@ -1,0 +1,73 @@
+{
+    "relationship_type": 1,
+    "company_message": {
+        "company_id": "c2174821-4d8a-420b-91fd-d5167d33e5fe",
+        "person_type": "J",
+        "cpf_cnpj": "00000000000191",
+        "name": "Empresa 1 Ltda",
+        "included_at": {
+            "seconds": 20,
+            "nanos": 10
+        },
+        "updated_at": {
+            "seconds": 20,
+            "nanos": 10
+        }
+    },
+    "partner_message": [
+        {
+            "partner_id": "ae4976b1-4ff0-44d2-a6cf-80b8f5274018",
+            "tenant_id": "a81d76b1-4ff0-44d2-a6cf-80b8f5274018",
+            "participation_percentage": 0.6000000000001,
+            "cpf_cnpj": "00093500743030",
+            "person_type": "F",
+            "name": "Nome Primeira Pessoa",
+            "social_name": "Nome Primeira Social",
+            "completeness": {
+                "completeness_level": 100,
+                "additional_information": "Hello",
+                "diff_message": {
+                    "open_diff": true,
+                    "journey_id": "78fb08fd-7d5b-49d6-b999-0939be396811",
+                    "date": {
+                        "seconds": 20,
+                        "nanos": 10
+                    }
+                },
+                "validated_at": {
+                    "seconds": 20,
+                    "nanos": 10
+                }
+            },
+            "included_at": {},
+            "updated_at": {}
+        },
+        {
+            "partner_id": "be4976b1-4ff0-44d2-a6cf-80b8f5274019",
+            "tenant_id": "a81d76b1-4ff0-44d2-a6cf-80b8f5274018",
+            "participation_percentage": 99.4,
+            "cpf_cnpj": "00087148998093",
+            "person_type": "F",
+            "name": "Nome Segunda Pessoa",
+            "social_name": "Nome Segunda Social",
+            "completeness": {
+                "completeness_level": 100,
+                "additional_information": "Hello",
+                "diff_message": {
+                    "open_diff": true,
+                    "journey_id": "78fb08fd-7d5b-49d6-b999-0939be396811",
+                    "date": {
+                        "seconds": 20,
+                        "nanos": 10
+                    }
+                },
+                "validated_at": {
+                    "seconds": 20,
+                    "nanos": 10
+                }
+            },
+            "included_at": {},
+            "updated_at": {}
+        }
+    ]
+}
