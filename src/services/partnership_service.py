@@ -1,8 +1,10 @@
 import uuid
 from tkinter import NO
+from turtle import back
 from typing import AnyStr
 
 import grpc
+from black import out
 from gremlin_python.process.graph_traversal import GraphTraversal, GraphTraversalSource
 from gremlin_python.process.traversal import T
 from grpc_argument_validator import validate_args
@@ -50,7 +52,7 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
         company_id = request.company_message.company_id
         person_type = request.company_message.person_type
 
-        if not self.validate_if_company_exists(company_id=company_id):
+        if not self.validate_if_person_exists(person_id=company_id):
             company = (
                 self.graph.addV(person_type)
                 .property(T.id, company_id)
@@ -67,7 +69,7 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
             partner_id = partner_message.partner_id
             partner_partner_id = partner_message.person_type
 
-            if not self.validate_if_partner_exists(partner_id=partner_id):
+            if not self.validate_if_person_exists(person_id=partner_id):
                 partner = (
                     self.graph.addV(partner_partner_id)
                     .property(T.id, partner_id)
@@ -83,6 +85,12 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
             ).property(
                 "participation_percentage", partner_message.participation_percentage
             ).iterate()
+
+            # self.graph.V(company).bothE.('x').bothV.retain([g.V(partner_id)]).back('x')
+
+            # self.graph.V(company).outE("has_partner").filter(inV().is(partner_id)).iterate()
+
+            # fold().coalesce(unfold(), addE())
 
             partner_profile_vertix_exists: GraphTraversal = self.graph.V().has(
                 T.id, partner_message.tenant_id + "." + partner_message.partner_id
@@ -140,15 +148,15 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
 
         return partnership
 
-    def validate_if_company_exists(self, company_id) -> bool:
+    def validate_if_person_exists(self, person_id) -> bool:
 
-        company: GraphTraversal = self.graph.V().has(T.id, company_id)
-        return company.hasNext()
+        person: GraphTraversal = self.graph.V().has(T.id, person_id)
+        return person.hasNext()
 
-    def validate_if_partner_exists(self, partner_id) -> bool:
+    def validate_if_edge_exists(self, person_id) -> bool:
 
-        partner: GraphTraversal = self.graph.V().has(T.id, partner_id)
-        return partner.hasNext()
+        person: GraphTraversal = self.graph.V().has(T.id, person_id)
+        return person.hasNext()
 
     def validate_add_partnership_service(self) -> None:
 
