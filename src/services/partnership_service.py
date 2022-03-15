@@ -1,5 +1,5 @@
 import uuid
-from operator import truediv
+from tkinter import NO
 from typing import AnyStr
 
 import grpc
@@ -39,6 +39,7 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
             "company_message": CompanyMessageValidator(),
             "partner_message[]": PartnerMessageValidator(),
         },
+        # validate_add_partnership_service
     )
     def AddPartnership(
         self, request: BusinessPartnershipMessage, context: grpc.ServicerContext
@@ -46,45 +47,36 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
         if request.relationship_type not in relationships_by_type:
             context.abort(grpc.StatusCode.NOT_FOUND, "Relationship type not supported")
 
-        # gremlin_connection_result = g.has('name', 'marko').out('knows').values('name')
-        # self.graph.addV(request.company_message.company_id).property('name', request.company_message[vertices].name)
+        company_id = request.company_message.company_id
+        person_type = request.company_message.person_type
 
-        # validates if company already exists
-
-        company_vertix_exists: GraphTraversal = self.graph.V().has(
-            T.id, request.company_message.company_id
-        )
-
-        if not company_vertix_exists.hasNext():
+        if not self.validate_if_company_exists(company_id=company_id):
             company = (
-                self.graph.addV(request.company_message.person_type)
-                .property(T.id, request.company_message.company_id)
-                .property("person_id", request.company_message.company_id)
-                .property("name", request.company_message.name)
+                self.graph.addV(person_type)
+                .property(T.id, company_id)
+                .property("person_id", company_id)
                 .next()
             )
         else:
-            company = (
-                self.graph.V().has(T.id, request.company_message.company_id).hasNext()
-            )
+            company = self.graph.V().has(T.id, company_id).next()
+
+        print(f"{company = }")
 
         for partner_message in request.partner_message:
 
-            person_vertix_exists: GraphTraversal = self.graph.V().has(
-                T.id, partner_message.partner_id
-            )
+            partner_id = partner_message.partner_id
+            partner_partner_id = partner_message.person_type
 
-            if not person_vertix_exists.hasNext():
+            if not self.validate_if_partner_exists(partner_id=partner_id):
                 partner = (
-                    self.graph.addV(partner_message.person_type)
-                    .property(T.id, partner_message.partner_id)
-                    .property("person_id", partner_message.partner_id)
+                    self.graph.addV(partner_partner_id)
+                    .property(T.id, partner_id)
+                    .property("person_id", partner_id)
                     .property("name", partner_message.name)
                 ).next()
             else:
-                # print("***************************************************************")
-                # print(self.graph.V().has(T.id, partner_message.partner_id))
-                partner = self.graph.V().has(T.id, partner_message.partner_id)
+                partner = self.graph.V().has(T.id, partner_id).next()
+                print(f"{partner = }")
 
             self.graph.V(company).addE("has_partner").to(partner).property(
                 T.id, uuid.uuid4()
@@ -112,19 +104,6 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
                 ).property("name", partner_message.name).property(
                     "social_name", partner_message.social_name
                 ).iterate()
-
-        # for vertices in [0, 1]:
-        #     print("!--------------------------------------------!")
-        #     # print(self.graph.V().has('name', request.partner_message[vertices].name))
-        #     # print(self.graph.V().has('person_type', request.partner_message[vertices].person_type))
-        #     print(
-        #         self.graph.V().has(
-        #             "partner_id",
-        #             request.partner_message[vertices].partner_id,
-        #             "name",
-        #             request.partner_message[vertices].name,
-        #         )
-        #     )
 
         logger.info(request)
         return request
@@ -161,11 +140,34 @@ class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):
 
         return partnership
 
-    def validate_if_person_vertix(self, person_id: AnyStr) -> bool:
+    def validate_if_company_exists(self, company_id) -> bool:
 
-        person_vetix_exists: GraphTraversal = self.graph.V().has(T.id, person_id)
+        company: GraphTraversal = self.graph.V().has(T.id, company_id)
+        return company.hasNext()
 
-        if not person_vetix_exists.hasNext():
-            return False
+    def validate_if_partner_exists(self, partner_id) -> bool:
 
-        return True
+        partner: GraphTraversal = self.graph.V().has(T.id, partner_id)
+        return partner.hasNext()
+
+    def validate_add_partnership_service(self) -> None:
+
+        non_default = (
+            [
+                "relationship_type",
+                "company_message.name",
+                "partner_message.completeness.additional_information",
+                "partner_message.name",
+            ],
+        )
+        validators = (
+            {
+                "relationship_type": RelationshipTypeValidator(),
+            },
+        )
+        optional_validators = (
+            {
+                "company_message": CompanyMessageValidator(),
+                "partner_message[]": PartnerMessageValidator(),
+            },
+        )

@@ -33,4 +33,7 @@ Useful cheatsheets:
 * Part 2: https://dkuppitz.github.io/gremlin-cheat-sheet/102.html
 
 ### Data Schema
+TBD
 
+### EKS
+TBD
