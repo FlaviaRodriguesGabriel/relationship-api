@@ -1,4 +1,5 @@
 import uuid
+from logging import getLogger
 from tkinter import NO
 from turtle import back
 from typing import AnyStr
@@ -8,7 +9,6 @@ from black import out
 from gremlin_python.process.graph_traversal import GraphTraversal, GraphTraversalSource
 from gremlin_python.process.traversal import T
 from grpc_argument_validator import validate_args
-from loguru import logger
 
 from stubs import relationship_pb2_grpc
 from stubs.relationship_pb2 import BusinessPartnershipMessage
@@ -18,6 +18,8 @@ from validators import (
     PartnerMessageValidator,
     RelationshipTypeValidator,
 )
+
+logger = getLogger(__name__)
 
 
 class PartnershipService(relationship_pb2_grpc.PartnershipServiceServicer):

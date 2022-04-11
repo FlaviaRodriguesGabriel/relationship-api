@@ -5,10 +5,12 @@
             "name": "Start app",
             "type": "python",
             "request": "launch",
-            "module": "src",
+            "program": "${workspaceFolder}/app/src/__main__.py",
+            // TODO: add .env
+            // "module": "src",
             "console": "integratedTerminal",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/src${pathSeparator}${env:PYTHONPATH}"
+                "PYTHONPATH": "${workspaceFolder}/app/src${pathSeparator}${env:PYTHONPATH}"
             },
             "justMyCode": false,
             "autoReload": {
@@ -23,13 +25,14 @@
             "name": "Clear graph",
             "type": "python",
             "request": "launch",
-            "module": "src",
+            "program": "${workspaceFolder}/app/src/__main__.py",
+            // "module": "src",
             "args": [
                 "clear"
             ],
             "console": "integratedTerminal",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/src${pathSeparator}${env:PYTHONPATH}"
+                "PYTHONPATH": "${workspaceFolder}/app/src${pathSeparator}${env:PYTHONPATH}"
             },
             "justMyCode": false,
             "autoReload": {

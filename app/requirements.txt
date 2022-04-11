@@ -1,0 +1,15 @@
+boto3==1.21.37
+python-decouple==3.6
+Django==4.0.3
+django-health-check==3.16.5
+django-stubs==1.10.1
+gremlinpython==3.5.2
+grpc-argument-validator==0.2.2
+grpcio==1.44.0
+grpcio-tools==1.44.0
+# loguru==0.6.0
+prometheus_metrics_proto==18.1.2
+protobuf==3.20.0
+requests==2.27.1
+structlog==21.5.0
+uvicorn==0.17.6

@@ -1,14 +1,13 @@
-#!/usr/bin/env python
+#! /usr/bin/env python
 
 from sys import argv
-
-from loguru import logger
 
 from app import App
 
 
-@logger.catch
-def main(clear=False):
+# from loguru import logger
+# @logger.catch
+def main(clear: bool = False) -> App:
     app = App(clear_on_startup=clear)
     app.start_server()
     return app

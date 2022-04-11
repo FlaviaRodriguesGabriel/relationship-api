@@ -23,40 +23,42 @@
         88
     ],
     "files.exclude": {
-        "**/*.pyc": true,
+        ".data": true,
+        ".pytest_cache": true,
+        ".venv": true,
+        "**/__pycache__": true,
         "**/.DS_Store": true,
         "**/.git": true,
         "**/.hg": true,
         "**/.mypy_cache": true,
         "**/.svn": true,
         "**/.terraform": true,
+        "**/*.pyc": true,
         "**/CVS": true,
-        "**/__pycache__": true,
         "**/env": true,
         "**/node_modules": true,
-        ".pytest_cache": true,
-        ".venv": true,
         "venv": true,
     },
     "python.analysis.extraPaths": [
-        "${workspaceFolder}/src"
+        "${workspaceFolder}/app/src"
     ],
     "python.autoComplete.extraPaths": [
-        "${workspaceFolder}/src"
+        "${workspaceFolder}/app/src"
     ],
     "python.envFile": "${workspaceFolder}/.env",
     "python.formatting.provider": "black",
     "python.linting.banditEnabled": true,
     "python.linting.enabled": true,
-    // "python.linting.flake8Args": [
-    //     "--config `find ${workspaceFolder} -name setup.cfg | grep -v '.venv' | head -n1`"
-    // ],
+    "python.linting.flake8Args": [
+        "--config",
+        "app/setup.cfg"
+    ],
     "python.linting.flake8Enabled": true,
     "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": false,
     "python.sortImports.args": [
-        "-sp `find ${workspaceFolder} -name setup.cfg | grep -v '.venv' | head -n1`"
+        "-sp app/setup.cfg"
     ],
-    "python.testing.cwd": "src/tests",
+    "python.testing.cwd": "app/src/tests",
     "shellcheck.run": "onSave"
 }
