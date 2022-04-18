@@ -1,0 +1,44 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Start app",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/app/src/__main__.py",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/app/src${pathSeparator}${env:PYTHONPATH}"
+            },
+            "justMyCode": false,
+            "autoReload": {
+                "enable": true,
+                "include": [
+                    "**/*.py",
+                    "**/*.pyw"
+                ]
+            }
+        },
+        {
+            "name": "Clear graph",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/app/src/__main__.py",
+            "args": [
+                "clear"
+            ],
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/app/src${pathSeparator}${env:PYTHONPATH}"
+            },
+            "justMyCode": false,
+            "autoReload": {
+                "enable": true,
+                "include": [
+                    "**/*.py",
+                    "**/*.pyw"
+                ]
+            }
+        }
+    ]
+}
