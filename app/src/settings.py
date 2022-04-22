@@ -11,3 +11,7 @@ class Settings(metaclass=SingletonMeta):
 
     http_port: int = int(environ.get("HTTP_PORT") or "8081")
     # http_workers: int = int(environ.get("HTTP_WORKERS") or "1")
+
+    max_partners_in_partnership: int = int(
+        environ.get("MAX_PARTNERS_IN_PARTNERSHIP") or "10"
+    )

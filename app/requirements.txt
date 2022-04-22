@@ -1,8 +1,11 @@
 boto3==1.21.42
 fastapi==0.75.2
 flask==2.1.1
+flask_inputs==0.3.0
 gremlinpython==3.6.0
+jsonschema==4.4.0
 prometheus_metrics_proto==18.1.2
+pydantic==1.9.0
 python-decouple==3.6
 requests==2.27.1
 structlog==21.5.0
