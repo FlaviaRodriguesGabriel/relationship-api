@@ -1,13 +1,17 @@
 from typing import Tuple
+from uuid import UUID
 
 from flask import Blueprint, Response, jsonify, request
 from requests.status_codes import codes
 
 from interfaces.http_server.flask_server.exceptions import InvalidUsage
 from models import inputs
+
+# from services import PartnershipService
 from settings import Settings
 
 index = Blueprint("index", __name__)
+# partnership_service = PartnershipService()
 
 
 @index.route("/")
@@ -22,14 +26,21 @@ def index_view() -> Tuple[Response, int]:
     )
 
 
-@index.route("/socios", methods=["POST"])
-def socios_view() -> Tuple[Response, int]:
-    partnership = inputs.Partnership.parse_obj(request.json)
+@index.route("/inquilinos/<uuid:id_inquilino>/socios", methods=["POST"])
+def socios_view(id_inquilino: UUID) -> Tuple[Response, int]:
 
-    ...  # TODO: insert `partnership` in DB
+    data = request.json or {}
 
+    partnership = inputs.Partnership(id_inquilino=id_inquilino, **data)
+
+    # partnership_created = partnership_service.create(partnership)
+
+    # return (
+    #     jsonify(**partnership_created.dict()),
+    #     codes.created,
+    # )
     return (
-        jsonify(**partnership.dict()),
+        jsonify(**partnership.dict(by_alias=True)),
         codes.created,
     )
 

@@ -25,6 +25,7 @@ class Diff(ApiModel):
 
 
 class Company(CompanyInput):
+    company_id: str
     included_at: datetime
     updated_at: datetime
 
@@ -34,6 +35,7 @@ class Completeness(CompletenessInput):
 
 
 class Partner(PartnerInput):
+    partner_id: str
     included_at: datetime
     updated_at: datetime
 

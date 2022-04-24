@@ -1,3 +1,4 @@
+# TODO: Use it or remove it
 class InvalidUsage(Exception):
     status_code = 400
 
