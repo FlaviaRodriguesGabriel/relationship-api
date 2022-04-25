@@ -23,22 +23,22 @@
         88
     ],
     "files.exclude": {
-        ".data": true,
-        ".mypy_cache": true,
-        ".pytest_cache": true,
-        ".venv": true,
-        "**/__pycache__": true,
+        "**/*.pyc": true,
         "**/.DS_Store": true,
         "**/.git": true,
         "**/.hg": true,
         "**/.mypy_cache": true,
         "**/.svn": true,
         "**/.terraform": true,
-        "**/*.pyc": true,
         "**/CVS": true,
+        "**/__pycache__": true,
         "**/env": true,
         "**/node_modules": true,
-        "venv": true,
+        ".data": true,
+        ".mypy_cache": true,
+        ".pytest_cache": true,
+        ".venv": true,
+        "venv": true
     },
     "python.analysis.extraPaths": [
         "${workspaceFolder}/app/src"
@@ -48,18 +48,26 @@
     ],
     "python.envFile": "${workspaceFolder}/.env",
     "python.formatting.provider": "black",
+    "python.linting.banditArgs": [
+        "--ini",
+        "${workspaceFolder}/app/.bandit"
+    ],
     "python.linting.banditEnabled": true,
     "python.linting.enabled": true,
     "python.linting.flake8Args": [
         "--config",
-        "app/setup.cfg"
+        "${workspaceFolder}/app/setup.cfg"
     ],
     "python.linting.flake8Enabled": true,
     "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": false,
     "python.sortImports.args": [
-        "-sp app/setup.cfg"
+        "-sp ${workspaceFolder}/app/setup.cfg"
     ],
-    "python.testing.cwd": "app/src/tests",
-    "shellcheck.run": "onSave"
+    "python.testing.cwd": "${workspaceFolder}/app/src/tests",
+    "shellcheck.run": "onSave",
+    "thunder-client.customLocation": "${workspaceFolder}/.vscode/thunder-client",
+    "thunder-client.saveToWorkspace": true,
+    "thunder-client.showActivityFromCollection": true,
+    "thunder-client.workspaceRelativePath": ".vscode/thunder-client"
 }

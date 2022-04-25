@@ -1,0 +1,77 @@
+[
+  {
+    "_id": "0f82fc4d-2937-4120-8300-b02259f25801",
+    "colId": "2120d6c7-b295-4189-87c5-b415dc5c51b4",
+    "containerId": "",
+    "name": "About",
+    "url": "{{url}}/",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-04-24T05:45:15.659Z",
+    "modified": "2022-04-24T05:47:14.209Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "9f389f9d-57fa-4ce6-a0ac-202b45c6f1f9",
+    "colId": "2120d6c7-b295-4189-87c5-b415dc5c51b4",
+    "containerId": "5e0a63fa-1d8a-41a3-9f6d-657095c9124e",
+    "name": "Healthcheck all",
+    "url": "{{url}}/healthcheck/",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-04-24T05:46:42.420Z",
+    "modified": "2022-04-24T05:46:45.018Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "13b80064-d824-45c5-ae2b-3c63ee5b08ed",
+    "colId": "2120d6c7-b295-4189-87c5-b415dc5c51b4",
+    "containerId": "5e0a63fa-1d8a-41a3-9f6d-657095c9124e",
+    "name": "Healthcheck DB",
+    "url": "{{url}}/healthcheck/db",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-04-24T05:47:19.006Z",
+    "modified": "2022-04-24T05:48:04.005Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "3d6d6bc9-852c-4420-8994-c9e41392b5fc",
+    "colId": "2120d6c7-b295-4189-87c5-b415dc5c51b4",
+    "containerId": "5e0a63fa-1d8a-41a3-9f6d-657095c9124e",
+    "name": "Healthcheck Disk",
+    "url": "{{url}}/healthcheck/disk",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-04-24T05:47:42.679Z",
+    "modified": "2022-04-24T05:48:06.807Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "2b974bd0-d48e-437b-acfb-ee770c438199",
+    "colId": "2120d6c7-b295-4189-87c5-b415dc5c51b4",
+    "containerId": "86bdae60-5e07-44a2-810a-ba75cd2c1d0e",
+    "name": "Create partnership",
+    "url": "{{url}}/dados_cadastrais/v1/inquilinos/6284e7c9-d4ce-42db-88a7-2d7b5ec015a4/clientes/737953d3-6bfe-5832-993a-411822ca6526/socios",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2022-04-24T05:57:11.784Z",
+    "modified": "2022-04-25T01:30:11.532Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"id_jornada\": \"6284e7c9-d4ce-42db-88a7-2d7b5ec015a4\",\n    \"chave_agrupamento_produto\": \"18\",\n    \"chave_produto\": \"00000000000191J\",\n    \"pessoa_relacionada\": {\n        \"documento_originacao\": {\n            \"numero\": \"00000000000191\",\n            \"tipo\": \"559\",\n            \"pais\": \"BR\",\n            \"validacoes\": {\n                \"nivel_completude\": 150,\n                \"informacoes_adicionais\": \"info\",\n                \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n            }\n        },\n        \"tipo_pessoa\": {\n            \"valor_dado_cadastral\": \"J\",\n            \"validacoes\": {\n                \"nivel_completude\": 150,\n                \"informacoes_adicionais\": \"info\",\n                \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n            }\n        },\n        \"nome\": {\n            \"valor_dado_cadastral\": \"Nome Empresa\",\n            \"validacoes\": {\n                \"nivel_completude\": 150,\n                \"informacoes_adicionais\": \"info\",\n                \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n            }\n        }\n    },\n    \"socios\": [\n        {\n            \"percentual_participacao\": {\n                \"valor_dado_cadastral\": 10.0,\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            },\n            \"documento_originacao\": {\n                \"numero\": \"00000000000272\",\n                \"tipo\": \"6978\",\n                \"pais\": \"BR\",\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            },\n            \"tipo_pessoa\": {\n                \"valor_dado_cadastral\": \"F\",\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            },\n            \"nome\": {\n                \"valor_dado_cadastral\": \"Nome Sócia 1\",\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            },\n            \"nome_social\": {\n                \"valor_dado_cadastral\": \"Nome Social da Sócia 1\",\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            },\n            \"cargo\": {\n                \"valor_dado_cadastral\": \"role\",\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            }\n        },\n        {\n            \"percentual_participacao\": {\n                \"valor_dado_cadastral\": 10.0,\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            },\n            \"documento_originacao\": {\n                \"numero\": \"00000000000356\",\n                \"tipo\": \"559\",\n                \"pais\": \"BR\",\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            },\n            \"tipo_pessoa\": {\n                \"valor_dado_cadastral\": \"J\",\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            },\n            \"nome\": {\n                \"valor_dado_cadastral\": \"Nome Sócia 2\",\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            },\n            \"cargo\": {\n                \"valor_dado_cadastral\": \"role\",\n                \"validacoes\": {\n                    \"nivel_completude\": 150,\n                    \"informacoes_adicionais\": \"info\",\n                    \"data_validacao\": \"2022-04-23 15:26:28.151170\"\n                }\n            }\n        }\n    ]\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]

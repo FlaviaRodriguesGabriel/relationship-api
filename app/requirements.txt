@@ -4,6 +4,7 @@ flask==2.1.1
 flask_inputs==0.3.0
 gremlinpython==3.6.0
 jsonschema==4.4.0
+loguru==0.6.0
 prometheus_metrics_proto==18.1.2
 pydantic==1.9.0
 python-decouple==3.6

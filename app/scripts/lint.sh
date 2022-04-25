@@ -8,7 +8,7 @@ DIRNAME="$(dirname "$0")"
 APP_DIR="$DIRNAME/.."
 MAIN_MODULE="src"
 SOURCE_DIR="$APP_DIR/$MAIN_MODULE"
-CONFIG_FILE_BANDIT="$APP_DIR/setup-bandit.yml"
+CONFIG_FILE_BANDIT="$APP_DIR/.bandit"
 CONFIG_FILE_GENERAL="$APP_DIR/setup.cfg"
 
 DIRNAME="$(realpath --relative-to=. "$DIRNAME")"
@@ -64,15 +64,15 @@ readonly NO_COLOR
 
 echoc() (
  COLOR="$1"
-  # shellcheck disable=SC2124
-  MSG="${@:2}"
-  echo -e "$COLOR$MSG$NO_COLOR"
+ # shellcheck disable=SC2124
+ MSG="${@:2}"
+ echo -e "$COLOR$MSG$NO_COLOR"
 )
 
 print_header() (
-  MSG="$*"
-  printf "\n\n"
-  echoc "$YELLOW" "$MSG"
+ MSG="$*"
+ printf "\n\n"
+ echoc "$YELLOW" "$MSG"
 )
 
 
@@ -84,7 +84,7 @@ virtualenv -p py38 .venv > /dev/null
 
 ## Lint the code
 print_header Running bandit...
-python -m bandit --configfile "$CONFIG_FILE_BANDIT" "$SOURCE_DIR"
+python -m bandit --ini "$CONFIG_FILE_BANDIT" -r "$SOURCE_DIR/.."
 
 print_header Running black...
 # python -m black --config "$CONFIG_FILE_GENERAL" "$SOURCE_DIR"
@@ -97,4 +97,4 @@ print_header Running isort...
 python -m isort --settings-path "$CONFIG_FILE_GENERAL" "$SOURCE_DIR"
 
 print_header Running mypy...
-python -m mypy  --config-file  "$CONFIG_FILE_GENERAL" "$SOURCE_DIR"
+python -m mypy --config-file "$CONFIG_FILE_GENERAL" "$SOURCE_DIR" --cache-dir="$APP_DIR/.mypy_cache"

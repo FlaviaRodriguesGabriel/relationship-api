@@ -1,9 +1,13 @@
+__all__ = [
+    "Settings",
+]
+
 from os import environ
 
-from utils.singleton import SingletonMeta
+from utils import Singleton
 
 
-class Settings(metaclass=SingletonMeta):
+class Settings(Singleton):
     app_name: str = environ.get("APP_NAME") or "relationship-api"
     debug: bool = bool(environ.get("DEBUG") or "False")
     environment: str = environ.get("ENVIRONMENT") or "undefined"

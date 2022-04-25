@@ -1,3 +1,7 @@
+__all__ = [
+    "FastApiServer",
+]
+
 from fastapi import FastAPI
 
 from interfaces.http_server import HttpServer

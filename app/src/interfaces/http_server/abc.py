@@ -1,3 +1,7 @@
+__all__ = [
+    "HttpServer",
+]
+
 from abc import ABC, abstractmethod
 
 

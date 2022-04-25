@@ -1,12 +1,16 @@
+__all__ = [
+    "GremlinServer",
+]
+
 from aiohttp.client_exceptions import ClientConnectionError
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
 from gremlin_python.process.anonymous_traversal import traversal
 from gremlin_python.process.graph_traversal import GraphTraversalSource
 
-from utils.singleton import SingletonMeta
+from utils import Singleton
 
 
-class GremlinServer(metaclass=SingletonMeta):
+class GremlinServer(Singleton):
     graph_db: GraphTraversalSource
     remote_conn: DriverRemoteConnection
 

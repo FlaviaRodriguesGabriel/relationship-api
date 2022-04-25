@@ -1,8 +1,12 @@
+__all__ = [
+    "FlaskServer",
+]
+
 from flask import Flask
 
 from interfaces.http_server import HttpServer
 
-from .controllers import health_check, index
+from .controllers import health_check_blueprint, index_blueprint, partnership_blueprint
 
 
 class FlaskServer(HttpServer):
@@ -25,8 +29,9 @@ class FlaskServer(HttpServer):
 
     def register_controllers(self) -> None:
         # TODO: find a way to auto-register all blueprints from path: ./controllers
-        self.flask.register_blueprint(index)
-        self.flask.register_blueprint(health_check)
+        self.flask.register_blueprint(index_blueprint)
+        self.flask.register_blueprint(health_check_blueprint)
+        self.flask.register_blueprint(partnership_blueprint)
 
     def run(self) -> None:
         self.flask.run(
