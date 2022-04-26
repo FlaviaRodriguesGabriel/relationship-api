@@ -63,8 +63,19 @@ class PartnerService(Singleton):
         return (
             self.graph.add_v(partner.person_type.value)
             .property(T.id, partner.client_id)
-            .property("origination_document", partner.origination_document.dict())
-            .property("person_type", partner.person_type.dict())
+            .property(
+                "origination_document_number",
+                partner.origination_document.dict().pop("number"),
+            )
+            .property(
+                "origination_document_type",
+                partner.origination_document.dict().pop("type"),
+            )
+            .property(
+                "origination_document_country",
+                partner.origination_document.dict().pop("country"),
+            )
+            .property("person_type", partner.person_type.dict().pop("value"))
             .property("included_at", partner.included_at)
             .property("updated_at", partner.updated_at)
         ).next()

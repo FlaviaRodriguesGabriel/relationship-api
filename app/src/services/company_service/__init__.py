@@ -39,8 +39,19 @@ class CompanyService(Singleton):
         return (
             self.graph.add_v(company.person_type.value)
             .property(T.id, company.client_id)
-            .property("origination_document", company.origination_document.dict())
-            .property("person_type", company.person_type.dict())
+            .property(
+                "origination_document_number",
+                company.origination_document.dict().pop("number"),
+            )
+            .property(
+                "origination_document_type",
+                company.origination_document.dict().pop("type"),
+            )
+            .property(
+                "origination_document_country",
+                company.origination_document.dict().pop("country"),
+            )
+            .property("person_type", company.person_type.dict().pop("value"))
             .property("included_at", company.included_at)
             .property("updated_at", company.updated_at)
             .next()

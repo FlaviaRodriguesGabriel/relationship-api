@@ -47,12 +47,18 @@ class ProfileService(Singleton):
     def _create_vertex(self, profile: internal.vertex.Profile) -> Vertex:
         profile.included_at = profile.updated_at = datetime.utcnow()
 
+        print(f"{profile.social_name=}=")
+        if profile.social_name is not None:
+            print(f"{profile.social_name.__getattribute__('value') =}")
+
         vertex: Vertex = (
             self.graph.add_v(internal.vertex.Labels.PROFILE)
             .property(T.id, profile.profile_id)
             # FIXME: .dict() here and similar lines in all code is not working as expected
-            .property("client", profile.client.dict())
-            .property("name", profile.name.dict() if profile.name else None)
+            # .property("client", profile.client.dict())
+            .property(
+                "name", profile.name.dict().pop("value") if profile.name else None
+            )
             .property("tenant_id", profile.tenant_id)
             .property("included_at", profile.included_at)
             .property("updated_at", profile.updated_at)
@@ -63,7 +69,7 @@ class ProfileService(Singleton):
             and profile.social_name is not None
         ):
             self.graph.V().has(T.id, profile.profile_id).property(
-                "social_name", profile.social_name.dict()
+                "social_name", profile.social_name.__getattribute__("value")
             ).next()
 
         return vertex
